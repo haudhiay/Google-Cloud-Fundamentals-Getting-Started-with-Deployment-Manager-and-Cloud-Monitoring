@@ -1,0 +1,17 @@
+export MY_ZONE=us-central1-a
+
+gsutil cp gs://cloud-training/gcpfcoreinfra/mydeploy.yaml mydeploy.yaml
+
+sed -i -e "s/qwiklabs-gcp-04-4330f89f3d34/$DEVSHELL_PROJECT_ID/" mydeploy.yaml
+
+sed -i -e "s/us-central1-a/$MY_ZONE/" mydeploy.yaml
+
+cat mydeploy.yaml
+
+gcloud deployment-manager deployments create my-first-depl --config mydeploy.yaml
+
+task 4
+
+change mydeploy.yaml
+
+gcloud deployment-manager deployments update my-first-depl --config mydeploy.yaml
